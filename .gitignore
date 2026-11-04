@@ -1,0 +1,45 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Generated model and embedding cache
+data/movie_overview_embeddings.npy
+data/movie_overview_embeddings.json
+
+# Large backup
+MovieFlix_Backup_Before_Cleanup.zip
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# MovieFlix datasets: keep only the main runtime dataset
+data/*
+!data/movieflix_movies.csv
+
+# Raw source datasets and generated reports
+data/raw/
+data/cleaned_movies.csv
+data/MovieGenre.csv
+data/movies_2000_onwards.csv
+data/movies_2000_problem_posters.csv
+data/poster_check_results.csv
+data/poster_replacement_test.csv
+data/poster_scan_results.csv
+
+# Old scripts
+archive/

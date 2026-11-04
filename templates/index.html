@@ -1,0 +1,389 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="MovieFlix helps you discover movies using intelligent AI-powered recommendations.">
+
+    <title>MovieFlix | Discover Your Next Movie</title>
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Custom CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+</head>
+
+<body>
+
+    <!-- =====================================
+         NAVIGATION
+    ====================================== -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="/">
+                MovieFlix<span>.</span>
+            </a>
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarMenu"
+                aria-controls="navbarMenu"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarMenu">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">
+                            Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#recommendations">
+                            Recommendations
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#mood-section">
+                            Mood Picks
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#ai-section">
+                            AI Assistant
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =====================================
+         HERO SECTION
+    ====================================== -->
+
+    <section class="hero-section">
+
+        <div class="container hero-content">
+
+            <p class="hero-tag">
+                YOUR PERSONAL MOVIE GUIDE
+            </p>
+
+            <h1>
+                Discover Movies<br>
+                <span>You'll Love.</span>
+            </h1>
+
+            <p class="hero-description">
+                Find your next favourite movie with intelligent
+                recommendations based on your taste and mood.
+            </p>
+
+            <a href="#recommendations" class="btn primary-btn">
+                Explore Movies
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         SIMILAR MOVIE RECOMMENDATIONS
+    ====================================== -->
+
+    <section class="section-container" id="recommendations">
+
+        <div class="section-heading">
+
+            <p class="section-tag">
+                PERSONALIZED DISCOVERY
+            </p>
+
+            <h2>
+                Find Similar Movies
+            </h2>
+
+            <p>
+                Enter a movie you love and discover similar movies
+                using our AI recommendation system.
+            </p>
+
+        </div>
+
+
+        <!-- Movie Search -->
+
+        <div class="movie-search-wrapper">
+
+            <div class="search-container">
+
+                <input
+                    type="text"
+                    id="movieSearch"
+                    placeholder="Enter a movie name..."
+                    autocomplete="off"
+                    aria-label="Search for a movie"
+                >
+
+                <button
+                    id="searchButton"
+                    class="primary-btn"
+                    type="button"
+                >
+                    Find Movies
+                </button>
+
+            </div>
+
+
+            <!-- Autocomplete Suggestions -->
+
+            <div
+                id="movieSuggestions"
+                class="suggestions-box"
+            ></div>
+
+        </div>
+
+
+        <!-- Search Message -->
+
+        <div
+            id="searchMessage"
+            class="message"
+            aria-live="polite"
+        ></div>
+
+
+        <!-- Recommendation Results -->
+
+        <div
+            id="similarMovies"
+            class="movie-grid"
+        ></div>
+
+    </section>
+
+
+    <!-- =====================================
+         MOOD RECOMMENDATIONS
+    ====================================== -->
+
+    <section class="mood-section" id="mood-section">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <p class="section-tag">
+                    MOVIES THAT MATCH YOU
+                </p>
+
+                <h2>
+                    What's Your Mood Today?
+                </h2>
+
+                <p>
+                    Select your mood and let MovieFlix find movies
+                    that match how you feel.
+                </p>
+
+            </div>
+
+
+            <!-- Mood Selection -->
+
+            <div class="mood-grid">
+
+                <button class="mood-card" data-mood="happy" type="button">
+                    😊
+                    <span>Happy</span>
+                </button>
+
+                <button class="mood-card" data-mood="sad" type="button">
+                    😢
+                    <span>Sad</span>
+                </button>
+
+                <button class="mood-card" data-mood="romantic" type="button">
+                    ❤️
+                    <span>Romantic</span>
+                </button>
+
+                <button class="mood-card" data-mood="adventurous" type="button">
+                    🌍
+                    <span>Adventurous</span>
+                </button>
+
+                <button class="mood-card" data-mood="excited" type="button">
+                    ⚡
+                    <span>Excited</span>
+                </button>
+
+                <button class="mood-card" data-mood="relaxed" type="button">
+                    😌
+                    <span>Relaxed</span>
+                </button>
+
+                <button class="mood-card" data-mood="scared" type="button">
+                    👻
+                    <span>Scared</span>
+                </button>
+
+                <button class="mood-card" data-mood="thoughtful" type="button">
+                    🧠
+                    <span>Thoughtful</span>
+                </button>
+
+            </div>
+
+
+            <!-- Mood Results -->
+
+            <div
+                id="moodMessage"
+                class="message"
+                aria-live="polite"
+            ></div>
+
+            <div
+                id="moodMovies"
+                class="movie-grid"
+            ></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         AI NATURAL LANGUAGE ASSISTANT
+    ====================================== -->
+
+    <section class="section-container" id="ai-section">
+
+        <div class="section-heading">
+
+            <p class="section-tag">
+                AI MOVIE ASSISTANT
+            </p>
+
+            <h2>
+                Tell Us How You Feel
+            </h2>
+
+            <p>
+                Describe what you want to watch in your own words.
+                Our AI will help discover suitable movies.
+            </p>
+
+        </div>
+
+
+        <!-- AI Input -->
+
+        <div class="ai-search-container">
+
+            <textarea
+                id="moodInput"
+                placeholder="Example: I want something exciting with action and adventure..."
+                rows="3"
+                aria-label="Describe the type of movie you want"
+            ></textarea>
+
+            <button
+                id="analyzeButton"
+                class="primary-btn"
+                type="button"
+            >
+                Get AI Recommendations
+            </button>
+
+        </div>
+
+
+        <!-- AI Results -->
+
+        <div
+            id="aiMessage"
+            class="message"
+            aria-live="polite"
+        ></div>
+
+        <div
+            id="aiMovies"
+            class="movie-grid"
+        ></div>
+
+    </section>
+
+
+    <!-- =====================================
+         FOOTER
+    ====================================== -->
+
+    <footer>
+
+        <h3>
+            MovieFlix<span>.</span>
+        </h3>
+
+        <p>
+            Discover your next favourite movie.
+        </p>
+
+        <p class="copyright">
+            © 2026 MovieFlix. All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- =====================================
+         JAVASCRIPT
+    ====================================== -->
+
+    <script
+        src="{{ url_for('static', filename='js/script.js') }}"
+        defer
+    ></script>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        defer
+    ></script>
+
+</body>
+
+</html>

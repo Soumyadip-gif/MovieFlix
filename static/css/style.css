@@ -1,0 +1,532 @@
+
+/* ==========================================
+   1. GLOBAL SETTINGS
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #0b0b0f;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+}
+
+
+/* ==========================================
+   2. NAVIGATION
+========================================== */
+
+.navbar {
+    background: #101015;
+    padding: 18px 0;
+    border-bottom: 1px solid #25252d;
+}
+
+.navbar-brand {
+    font-size: 28px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.navbar-brand span,
+footer span {
+    color: #e50914;
+}
+
+.nav-link {
+    color: #cccccc !important;
+    margin-left: 20px;
+    transition: 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #e50914 !important;
+}
+
+
+/* ==========================================
+   3. HERO SECTION
+========================================== */
+
+.hero-section {
+    min-height: 490px;
+    display: flex;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0b0b0f 5%,
+            rgba(11, 11, 15, 0.85) 55%,
+            rgba(11, 11, 15, 0.25)
+        ),
+        linear-gradient(
+            0deg,
+            #0b0b0f,
+            transparent
+        ),
+        url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1600");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    padding-top: 55px;
+    padding-bottom: 55px;
+}
+
+.hero-tag,
+.section-tag {
+    color: #e50914;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.hero-content h1 {
+    font-size: clamp(42px, 6vw, 70px);
+    font-weight: 800;
+    margin: 20px 0;
+    line-height: 1.15;
+}
+
+.hero-content h1 span {
+    color: #e50914;
+}
+
+.hero-description {
+    max-width: 520px;
+    color: #cccccc;
+    line-height: 1.7;
+    margin-bottom: 28px;
+}
+
+
+/* ==========================================
+   4. BUTTONS
+========================================== */
+
+.primary-btn {
+    background: #e50914;
+    border: none;
+    color: white;
+    padding: 13px 24px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.primary-btn:hover {
+    background: #b80710;
+    transform: translateY(-2px);
+}
+
+.primary-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+/* ==========================================
+   5. MAIN SECTIONS
+========================================== */
+
+.section-container,
+.mood-section {
+    padding: 75px 8%;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-heading h2 {
+    font-size: 32px;
+    font-weight: 750;
+    margin: 12px 0;
+}
+
+.section-heading p:last-child {
+    color: #aaaaaa;
+    line-height: 1.7;
+}
+
+
+/* ==========================================
+   6. MOVIE SEARCH
+========================================== */
+
+.movie-search-wrapper {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.search-container,
+.ai-search-container {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    gap: 12px;
+}
+
+.movie-search-wrapper .search-container {
+    max-width: 100%;
+}
+
+.search-container input,
+.ai-search-container textarea {
+    flex: 1;
+    min-width: 0;
+    background: #191920;
+    color: white;
+    border: 1px solid #33333d;
+    border-radius: 6px;
+    padding: 14px;
+    outline: none;
+}
+
+.search-container input:focus,
+.ai-search-container textarea:focus {
+    border-color: #e50914;
+}
+
+.search-container input::placeholder,
+.ai-search-container textarea::placeholder {
+    color: #85858f;
+}
+
+.ai-search-container {
+    flex-direction: column;
+}
+
+.ai-search-container textarea {
+    resize: vertical;
+}
+
+
+/* ==========================================
+   7. AUTOCOMPLETE SUGGESTIONS
+========================================== */
+
+.suggestions-box {
+    display: none;
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    right: 0;
+
+    z-index: 1000;
+
+    max-height: 280px;
+    overflow-y: auto;
+
+    background: #191920;
+    border: 1px solid #33333d;
+    border-radius: 6px;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.suggestion-item {
+    padding: 12px 15px;
+    color: #ffffff;
+    cursor: pointer;
+    border-bottom: 1px solid #33333d;
+    transition: 0.2s;
+}
+
+.suggestion-item:hover {
+    background: #e50914;
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
+}
+
+
+/* ==========================================
+   8. MOOD SECTION
+========================================== */
+
+.mood-section {
+    background: #111116;
+}
+
+.mood-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.mood-card {
+    background: #1c1c24;
+    color: white;
+    border: 1px solid #33333d;
+    border-radius: 8px;
+    padding: 22px 10px;
+    font-size: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.mood-card span {
+    display: block;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.mood-card:hover,
+.mood-card.selected {
+    background: #e50914;
+    border-color: #e50914;
+    transform: translateY(-4px);
+}
+
+
+/* ==========================================
+   9. MOVIE GRID
+========================================== */
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(180px, 1fr)
+    );
+
+    gap: 22px;
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   10. MOVIE CARDS
+========================================== */
+
+.movie-card {
+    background: #191920;
+    border: 1px solid #25252d;
+    border-radius: 9px;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+
+    transition: 0.3s;
+}
+
+.movie-card:hover {
+    transform: translateY(-7px);
+    border-color: #e50914;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+
+/* ==========================================
+   11. MOVIE POSTERS
+========================================== */
+
+.movie-card img.movie-poster {
+    display: block;
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    height: auto;
+
+    object-fit: cover;
+    object-position: center;
+
+    background: #292932;
+}
+
+
+/* ==========================================
+   12. MOVIE INFORMATION
+========================================== */
+
+.movie-info {
+    padding: 14px;
+    flex: 1;
+}
+
+.movie-info h4 {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.4;
+    margin-bottom: 9px;
+    overflow-wrap: anywhere;
+}
+
+.movie-info p {
+    font-size: 13px;
+    color: #aaaaaa;
+    margin-bottom: 6px;
+    line-height: 1.5;
+}
+
+.rating {
+    color: #ffc107 !important;
+    font-weight: bold;
+}
+
+
+/* ==========================================
+   13. RECOMMENDATION DETAILS
+========================================== */
+
+.recommendation-score {
+    color: #66d9a5 !important;
+    font-weight: bold;
+}
+
+.movie-explanation {
+    color: #cccccc !important;
+    font-size: 12px !important;
+    line-height: 1.6 !important;
+    margin-top: 10px;
+}
+
+.movie-link {
+    display: inline-block;
+    margin-top: 8px;
+    color: #e50914;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.movie-link:hover {
+    color: #ff424b;
+    text-decoration: underline;
+}
+
+
+/* ==========================================
+   14. MESSAGES
+========================================== */
+
+.message {
+    text-align: center;
+    color: #cccccc;
+    margin-top: 20px;
+    line-height: 1.6;
+}
+
+.empty-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #aaaaaa;
+    padding: 25px;
+}
+
+
+/* ==========================================
+   15. FOOTER
+========================================== */
+
+footer {
+    text-align: center;
+    background: #08080b;
+    padding: 35px 15px;
+    border-top: 1px solid #25252d;
+}
+
+footer h3 {
+    font-weight: 800;
+}
+
+footer p {
+    color: #999999;
+    margin-top: 10px;
+}
+
+.copyright {
+    font-size: 12px;
+}
+
+
+/* ==========================================
+   16. RESPONSIVE DESIGN
+========================================== */
+
+@media (max-width: 768px) {
+
+    .hero-section {
+        min-height: 420px;
+    }
+
+    .section-container,
+    .mood-section {
+        padding: 55px 5%;
+    }
+
+    .section-heading h2 {
+        font-size: 27px;
+    }
+
+    .mood-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .search-container {
+        flex-direction: column;
+    }
+
+    .search-container button {
+        width: 100%;
+    }
+
+    .movie-grid {
+        grid-template-columns: repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+        gap: 12px;
+    }
+
+    .movie-info {
+        padding: 10px;
+    }
+
+    .movie-info h4 {
+        font-size: 14px;
+    }
+
+    .movie-card img.movie-poster {
+        aspect-ratio: 2 / 3;
+        height: auto;
+    }
+
+}
+
+
+@media (max-width: 380px) {
+
+    .movie-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content h1 {
+        font-size: 38px;
+    }
+
+}
